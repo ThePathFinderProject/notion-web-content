@@ -1,3 +1,4 @@
+import React from 'react'
 import { GetStaticProps } from 'next'
 
 import { domain, isDev } from '@/lib/config'
@@ -53,10 +54,10 @@ export async function getStaticPaths() {
 // export default function NotionDomainDynamicPage(req, res, props) {
 //   res.status(200).json(props)
 // }
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
-}
-// export default function NotionDomainDynamicPage(req, res) {
-//   return res.status(200).json({ name: 'John Doe' })
-  // return <pre><code>{JSON.stringify(props, null, 2)}</code></pre>
+// export default function handler(req, res) {
+  // res.status(200).json({ name: 'John Doe' })
 // }
+export default function NotionDomainDynamicPage(props) {
+//   return res.status(200).json({ name: 'John Doe' })
+  return <pre><code>{JSON.stringify(props, null, 2)}</code></pre>
+}
