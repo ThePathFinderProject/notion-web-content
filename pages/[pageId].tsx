@@ -1,5 +1,5 @@
-import React from 'react'
 import { GetStaticProps } from 'next'
+import React from 'react'
 
 import { domain, isDev } from '@/lib/config'
 import { getSiteMap } from '@/lib/get-site-map'
@@ -55,9 +55,13 @@ export async function getStaticPaths() {
 //   res.status(200).json(props)
 // }
 // export default function handler(req, res) {
-  // res.status(200).json({ name: 'John Doe' })
+// res.status(200).json({ name: 'John Doe' })
 // }
 export default function NotionDomainDynamicPage(props) {
-//   return res.status(200).json({ name: 'John Doe' })
-  return <pre><code>{JSON.stringify(props, null, 2)}</code></pre>
+  //   return res.status(200).json({ name: 'John Doe' })
+  return (
+    <pre>
+      <code>{JSON.stringify(props, null, 2)}</code>
+    </pre>
+  )
 }
