@@ -79,8 +79,15 @@ export async function getStaticPaths() {
 export default async function NotionDomainDynamicPage(req, res) {
   const rawPageId = req.query.pageId as string
   await runMiddleware(req, res, cors)
+  let props;
+  try {
+    props = await resolveNotionPage(domain, rawPageId)
 
-  const props = await resolveNotionPage(domain, rawPageId)
+  } catch (err) {
+    console.error('page error', domain, rawPageId, err)
+    res.status(404).json({ message: 'Page not found'})
+    return
+  }
 
   // console.log(req.query)
   res.status(200).json(props)
